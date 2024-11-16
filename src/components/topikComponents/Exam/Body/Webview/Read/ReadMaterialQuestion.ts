@@ -5,7 +5,9 @@ import {
 
 export const ReadMaterialQuestion = (
   material: dataMaterialType,
-  lstQuestion: listAnswerType,
+  lstQuestion?: listAnswerType,
+  sectionStattus?: number,
+  checkedIcon?: string,
 ) => {
   return ` <div>${material?.contentHtml}</div>
         ${material?.data
@@ -47,15 +49,25 @@ export const ReadMaterialQuestion = (
             lstQuestion && lstQuestion[item.index]?.answer === i
               ? `checked`
               : ``
-          }/>
+          }
+            ${rdo.isAnswer && rdo.userSelected ? `checked` : ``}        
+          />
                 <div></div>
               </div>
               <label for="${rdo.content}"> ${rdo.content} </label>
+                    ${rdo.isAnswer ? checkedIcon : ``}
             </div>
             `;
               })
               .join('')}
           </div>
+            ${
+              sectionStattus === 2
+                ? ` <div style="padding: 20px; background-color: #F1F4FC; margin: 10px; border-radius: 5px; color: #324357;">
+          <h3 style="color: #5685ff;"> Giải thích </h3>
+          ${item.explain}</div>`
+                : ``
+            }
         </div>
         `;
           })

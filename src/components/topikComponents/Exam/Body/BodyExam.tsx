@@ -1,13 +1,13 @@
 import React, {useContext, useEffect, useMemo, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {getExamDoing} from '../../../../Service/topikService/axiosTopik';
-import {DoingExamType} from '../../../../util/GlobalType';
 import {Light} from '../../../../util/Theme/ThemeGlobal';
 import {ExamContext} from '../../../Context/Topik/Exam/DoingExamProvider';
 import TableQuestion from '../Footer/TableQuestion';
 import {RenderData} from './Webview/RenderData';
 import WebViewDoing from './Webview/WebViewDoing';
 import {getIdxByQuestion} from '../../../../util/topik/getIdxByCurrQuestion';
+import {DoingExamType} from '../../../../util/GlobalType';
 
 interface BodyExamProps {
   ieltsId: string;

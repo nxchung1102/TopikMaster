@@ -766,6 +766,7 @@ export type dataStandardType =
       typeView: number;
       userOptionId: [];
       dataOutline: [];
+      userOptionText: string[];
     }
   | undefined;
 

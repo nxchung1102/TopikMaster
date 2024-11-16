@@ -1,8 +1,8 @@
 import {Animated, Easing} from 'react-native';
 import {
+  openModalType,
   closeModalType,
   confirmModalType,
-  openModalType,
 } from '../../../../util/GlobalType';
 
 export const handleOpenModal = (props: openModalType) => {

@@ -1,12 +1,12 @@
 import {WebViewMessageEvent} from 'react-native-webview';
+
 import {
   AnswerSelectProps,
   DoingExamType,
 } from '../../../../../../util/GlobalType';
+import {storageData} from '../../../../../../util/topik/AsyncStorage';
 import {findQuestion} from '../../../../../../util/topik/findQuestion';
-import {getData, storageData} from '../../../../../../util/topik/AsyncStorage';
 import {getNameSectionByType} from '../../../../../../util/topik/getNameSectionByType';
-import {saveAnwser} from '../../../../../../Service/topikService/axiosTopik';
 interface WebViewHandlerProps {
   event: WebViewMessageEvent;
   examData: DoingExamType | null;

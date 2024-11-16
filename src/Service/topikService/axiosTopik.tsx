@@ -1,8 +1,8 @@
 import axios from 'axios';
 import {
-  AnswerSelectProps,
   postDoneExamType,
   updateSectionType,
+  AnswerSelectProps,
 } from '../../util/GlobalType';
 
 const api = axios.create({

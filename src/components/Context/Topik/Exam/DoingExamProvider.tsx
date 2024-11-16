@@ -1,11 +1,11 @@
 import React, {createContext, ReactNode, useRef, useState} from 'react';
 import {StyleSheet} from 'react-native';
+import WebView from 'react-native-webview';
 import {
-  AnswerSelectProps,
   DoingExamType,
   listAnswerType,
+  AnswerSelectProps,
 } from '../../../../util/GlobalType';
-import WebView from 'react-native-webview';
 
 interface ExamContextType {
   isShowTable: boolean | null;

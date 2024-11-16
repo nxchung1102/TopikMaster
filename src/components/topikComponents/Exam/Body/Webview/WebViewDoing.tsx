@@ -5,9 +5,9 @@ import {
   getAnwser,
   saveAnwser,
 } from '../../../../../Service/topikService/axiosTopik';
-import {AnswerSelectProps} from '../../../../../util/GlobalType';
 import {ExamContext} from '../../../../Context/Topik/Exam/DoingExamProvider';
 import {WebViewHandler} from './WebViewHandle/WebViewHandler';
+import {AnswerSelectProps} from '../../../../../util/GlobalType';
 interface WebViewDoingProps {
   html: string;
 }

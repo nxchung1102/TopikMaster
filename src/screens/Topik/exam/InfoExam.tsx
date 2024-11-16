@@ -19,10 +19,10 @@ import {
 } from '../../../components/topikComponents/Exam/modalInfo/HandleModal';
 import LoadingModal from '../../../components/topikComponents/Exam/Modal/LoadingModal';
 import {getInfoExam} from '../../../Service/topikService/axiosTopik';
-import {InfoExamType} from '../../../util/GlobalType';
 import ExitModalContent from '../../../components/topikComponents/Exam/modalInfo/ExitModalContent';
 import {getNameSectionByType} from '../../../util/topik/getNameSectionByType';
 import {getData, storageData} from '../../../util/topik/AsyncStorage';
+import {InfoExamType} from '../../../util/GlobalType';
 const screenHeight = Dimensions.get('window').height;
 const modalHeight = 200;
 const InfoExam = ({route}: any) => {

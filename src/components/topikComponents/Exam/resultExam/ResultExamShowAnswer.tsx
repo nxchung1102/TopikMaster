@@ -1,14 +1,20 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 type ResultExamShowAnswerType = {
   section: any[];
+  idConfig: string;
 };
 
 const ResultExamShowAnswer = (props: ResultExamShowAnswerType) => {
-  const {section} = props;
+  const {section, idConfig} = props;
   const sectionLength = section.length;
-  const handleRout = () => {};
+  const navigation = useNavigation<any>();
+
+  const handleRout = (typeSection: number) => {
+    navigation.navigate('ResultSolution', {idConfig, typeSection});
+  };
   return (
     <View style={sectionLength > 1 ? styles.manyContainer : styles.container}>
       <View style={sectionLength > 1 ? styles.headItems : styles.headItem}>
@@ -29,7 +35,7 @@ const ResultExamShowAnswer = (props: ResultExamShowAnswerType) => {
             <View style={styles.answerContainer}>
               <TouchableOpacity
                 style={styles.btnCheckAnswer}
-                onPress={handleRout}>
+                onPress={() => handleRout(item.typeSection)}>
                 <Text style={styles.textBtnCheckAnswer}>Xem đáp án</Text>
               </TouchableOpacity>
             </View>

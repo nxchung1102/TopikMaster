@@ -8,8 +8,8 @@ import {
 import ViewRender from '../../../components/topikComponents/Exam/listCourse/ViewRender';
 import DetailCourseHeader from '../../../components/topikComponents/headerComponents/DetailCourseHeader';
 import {getCourseById} from '../../../Service/topikService/axiosTopik';
-import {CourseDataType, CourseType} from '../../../util/GlobalType';
 import LoadingModal from '../../../components/topikComponents/Exam/Modal/LoadingModal';
+import {CourseDataType, CourseType} from '../../../util/GlobalType';
 
 const DetailCourse = ({route}: any) => {
   const [course, setCourse] = useState<CourseType>();

@@ -10,7 +10,7 @@ import {WriteScript} from './Write/WriteScript';
 import {WriteStandardQuestion} from './Write/WriteStandardQuestion';
 
 export const RenderData = (
-  examData: DoingExamType | null,
+  examData: any | DoingExamType | null,
   idxPart: number,
   idxQuestion: number,
   lstQuestion: listAnswerType,
