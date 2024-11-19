@@ -15,7 +15,7 @@ import ResultExamLevel from '../../../components/topikComponents/Exam/resultExam
 import ResultExamScoreSection from '../../../components/topikComponents/Exam/resultExam/ResultExamScoreSection';
 import ResultExamShowAnswer from '../../../components/topikComponents/Exam/resultExam/ResultExamShowAnswer';
 import ResultExamTotalScore from '../../../components/topikComponents/Exam/resultExam/ResultExamTotalScore';
-import Tooltip from '../../../components/topikComponents/Exam/resultExam/Table/Tooltip';
+import Tooltip from '../../../components/topikComponents/Exam/resultExam/ToolTipTable/Tooltip';
 import {getResultCourse} from '../../../Service/topikService/axiosTopik';
 import {ResultExamProvider} from '../../../components/Context/Topik/Result/ResultExamProvider';
 

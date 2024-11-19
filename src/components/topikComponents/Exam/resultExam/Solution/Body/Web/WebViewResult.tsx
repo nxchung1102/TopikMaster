@@ -1,6 +1,7 @@
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import WebView from 'react-native-webview';
+import {Light} from '../../../../../../../util/Theme/ThemeGlobal';
 
 let baseUrl = 'file:///android_asset/';
 if (Platform.OS === 'ios') {

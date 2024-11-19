@@ -61,6 +61,8 @@ const TableQuestion = () => {
       <View
         style={[
           {
+            position: 'absolute',
+            bottom: 0,
             flexDirection: 'row',
             flexWrap: 'wrap',
             backgroundColor: LightPink,

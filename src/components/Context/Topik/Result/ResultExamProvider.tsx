@@ -9,6 +9,8 @@ interface ResultContextType {
   setIdxQuestion: React.Dispatch<React.SetStateAction<number>>;
   typeSection: number | null;
   setTypeSection: React.Dispatch<React.SetStateAction<number | null>>;
+  isShow: boolean;
+  setIsShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const defaultValue: ResultContextType = {
   data: null,
@@ -19,6 +21,8 @@ const defaultValue: ResultContextType = {
   setIdxQuestion: () => {},
   typeSection: null,
   setTypeSection: () => {},
+  isShow: false,
+  setIsShow: () => {},
 };
 
 const ResultContext = createContext<ResultContextType>(defaultValue);
@@ -28,6 +32,7 @@ export const ResultExamProvider = ({children}: {children: ReactNode}) => {
   const [idxPart, setIdxPart] = useState<number>(0);
   const [idxQuestion, setIdxQuestion] = useState<number>(0);
   const [typeSection, setTypeSection] = useState<number | null>(null);
+  const [isShow, setIsShow] = useState(false);
   return (
     <ResultContext.Provider
       value={{
@@ -39,6 +44,8 @@ export const ResultExamProvider = ({children}: {children: ReactNode}) => {
         setIdxQuestion,
         typeSection,
         setTypeSection,
+        isShow,
+        setIsShow,
       }}>
       {children}
     </ResultContext.Provider>

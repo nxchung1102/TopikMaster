@@ -8,6 +8,7 @@ export const ListenStandardQuestion = (
   lstQuestion?: listAnswerType,
   sectionStattus?: number,
   checkedIcon?: string,
+  failedIcon?: string,
 ) => {
   return `
    <div style="display: flex; flex-direction: row; padding-top: 10px;justify-content: space-between; align-items: center;">
@@ -50,12 +51,16 @@ export const ListenStandardQuestion = (
               ? `checked`
               : ``
           }
-              ${rdo.isAnswer && rdo.userSelected ? `checked` : ``}
+              ${rdo.userSelected ? `checked` : ``}
+               ${sectionStattus === 2 ? `disabled` : ``}
           />
             <div></div>
           </div>
           <label for="${i}"> ${rdo.content} </label>
           ${rdo.isAnswer ? checkedIcon : ``}
+          ${
+            rdo.userSelected !== rdo.isAnswer && !rdo.isAnswer ? failedIcon : ``
+          }
         </div>
         `;
           })

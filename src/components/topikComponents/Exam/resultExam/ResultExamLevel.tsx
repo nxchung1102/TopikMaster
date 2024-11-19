@@ -3,14 +3,15 @@ import React from 'react';
 
 type ResultExamLevelType = {
   sectionLength: number;
-  dataResult: any;
+  dataResult?: any;
 };
 const ResultExamLevel = (props: ResultExamLevelType) => {
   const {sectionLength, dataResult} = props;
   return (
-    sectionLength && (
+    sectionLength &&
+    sectionLength > 1 && (
       <View style={styles.container}>
-        <View style={sectionLength > 1 ? styles.titleHeades : styles.titleHead}>
+        <View style={styles.titleHead}>
           <Text style={{color: 'black'}}>Trình độ</Text>
         </View>
 
@@ -35,13 +36,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     maxHeight: '40%',
-  },
-  titleHeades: {
-    borderWidth: 0.2,
-    borderColor: '#D5DCE5',
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   level: {
     borderWidth: 0.2,

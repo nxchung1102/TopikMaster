@@ -1,11 +1,13 @@
 import {dataStandardType} from '../../../../../../util/GlobalType';
 import {GetDataTitleWriting} from '../../../../../../util/topik/GetDataTitleWriting';
+import {explainRender} from '../../../resultExam/Solution/Body/Web/ExplainRender';
 
 export const WriteStandardQuestion = (
   standard: dataStandardType,
   sectionStattus?: number,
 ) => {
   const {QuestionTitle} = GetDataTitleWriting(standard);
+
   return `
   <div style="display: flex; flex-direction: row; padding-top: 10px;justify-content: space-between; align-items: center;">
          <div style="display: flex; flex-direction: row; ">
@@ -26,7 +28,13 @@ export const WriteStandardQuestion = (
       <div>${standard?.question}</div>
       ${
         standard?.indexStart === standard?.indexEnd
-          ? `<textarea 
+          ? `
+          ${
+            sectionStattus === 2
+              ? `<h3 style="padding: 0px 0px 5px 0px "> Bài viết của bạn </h3>`
+              : ``
+          }
+          <textarea 
           id="writingArea" 
           rows="10" cols="50" 
           placeholder="Viết câu trả lời tối thiểu 70 ký tự, tối đa 800 ký tự."></textarea>
@@ -40,12 +48,6 @@ export const WriteStandardQuestion = (
           `
           : ``
       }
-        ${
-          sectionStattus === 2
-            ? ` <div style="padding: 20px; background-color: #F1F4FC; margin: 10px; border-radius: 5px; color: #324357;">
-          <h3 style="color: #5685ff;"> Giải thích </h3>
-          ${standard?.explain}</div>`
-            : ``
-        }
+        ${sectionStattus === 2 ? explainRender(standard) : ``}
   `;
 };

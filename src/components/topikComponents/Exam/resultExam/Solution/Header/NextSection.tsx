@@ -8,7 +8,8 @@ interface NextSectionProps {
 }
 const NextSection = (props: NextSectionProps) => {
   const {data} = props;
-  const {setTypeSection, typeSection, setData} = useDataResult();
+  const {setTypeSection, typeSection, setData, setIdxPart, setIdxQuestion} =
+    useDataResult();
   return (
     <View
       style={{
@@ -34,6 +35,7 @@ const NextSection = (props: NextSectionProps) => {
             onPress={() => {
               setTypeSection(item.typeSection);
               setData(item);
+              setIdxPart(0), setIdxQuestion(0);
             }}>
             <Text
               style={[
