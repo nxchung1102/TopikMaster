@@ -3,30 +3,22 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {
   Animated,
   Dimensions,
-  Modal,
   SafeAreaView,
   StyleSheet,
   View,
 } from 'react-native';
-import HeaderLeft from '../../../components/topikComponents/Exam/infoExam/HeaderLeft';
+import HeaderLeft from '../../../components/topikComponents/Exam/Header/HeaderLeft';
+import LoadingModal from '../../../components/topikComponents/Exam/Modal/LoadingModal';
+import {getInfoExam} from '../../../Service/topikService/axiosTopik';
+import {InfoExamType} from '../../../util/GlobalType';
+import {getData, storageData} from '../../../util/topik/AsyncStorage';
+import {getNameSectionByType} from '../../../util/topik/getNameSectionByType';
 import ListenInfo from '../../../components/topikComponents/Exam/infoExam/ListeningInfo';
 import ReadingInfo from '../../../components/topikComponents/Exam/infoExam/ReadingInfo';
 import WritingInfo from '../../../components/topikComponents/Exam/infoExam/WritingInfo';
-import {
-  handleCloseModal,
-  handleConfrmModal,
-  handleOpenModal,
-} from '../../../components/topikComponents/Exam/modalInfo/HandleModal';
-import LoadingModal from '../../../components/topikComponents/Exam/Modal/LoadingModal';
-import {getInfoExam} from '../../../Service/topikService/axiosTopik';
-import ExitModalContent from '../../../components/topikComponents/Exam/modalInfo/ExitModalContent';
-import {getNameSectionByType} from '../../../util/topik/getNameSectionByType';
-import {getData, storageData} from '../../../util/topik/AsyncStorage';
-import {InfoExamType} from '../../../util/GlobalType';
 const screenHeight = Dimensions.get('window').height;
 const modalHeight = 200;
 const InfoExam = ({route}: any) => {
-  const [modalVisible, setModalVisible] = useState(false);
   const slideAnim = useRef(new Animated.Value(-500)).current;
   const navigation = useNavigation<any>();
   const [dataInfo, setDataInfo] = useState<InfoExamType>();
@@ -57,24 +49,7 @@ const InfoExam = ({route}: any) => {
         .catch(err => console.log(err));
     }, []),
   );
-  const handleOpenModalInfo = () => {
-    handleOpenModal({
-      modalHeight,
-      screenHeight,
-      slideAnim,
-      handleState() {
-        setModalVisible(true);
-      },
-    });
-  };
-  const handleCloseModalInfo = () => {
-    handleCloseModal({
-      slideAnim,
-      handleState() {
-        setModalVisible(false);
-      },
-    });
-  };
+
   const handleRoute = () => {
     getData(keyStore).then(rs => {
       if (rs) {
@@ -86,28 +61,38 @@ const InfoExam = ({route}: any) => {
             item => item.status !== 4,
           ).length,
         });
+      } else {
+        navigation.navigate('DoingExam', {
+          ieltsId: dataInfo?.data?.ieltsId,
+          sectionLength: dataInfo?.data.sections.filter(
+            item => item.status !== 4,
+          ).length,
+        });
       }
     });
   };
-  const handleExitModal = () => {
-    const params = {idCourse: dataInfo?.data.groupId};
-    const routeName = 'DetailCourse';
-    handleConfrmModal({
-      slideAnim,
-      params,
-      handleState() {
-        setModalVisible(false);
-      },
-      routeName,
-      navigation,
-    });
-  };
+
   return (
     <SafeAreaView style={{flex: 1}}>
       {isLoading && <LoadingModal isLoading={isLoading} />}
       <View style={{flex: 1}}>
         <View style={{flex: 1}}>
-          <HeaderLeft handleOpen={handleOpenModalInfo} />
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+              maxHeight: '10%',
+              flex: 1,
+              backgroundColor: '#FF5F7A',
+            }}>
+            <HeaderLeft
+              modalHeight={modalHeight}
+              screenHeight={screenHeight}
+              slideAnim={slideAnim}
+            />
+          </View>
           <View style={{flex: 1}}></View>
           <View style={{flex: 3, paddingHorizontal: 20}}>
             {dataInfo?.data?.typeSectionNow == 1 && (
@@ -121,22 +106,7 @@ const InfoExam = ({route}: any) => {
             )}
           </View>
         </View>
-        <View style={styles.container}>
-          <Modal
-            transparent
-            visible={modalVisible}
-            onRequestClose={handleCloseModalInfo}
-            animationType="none">
-            <View style={styles.modalBackground}>
-              <ExitModalContent
-                cancelExit={handleExitModal}
-                closeModalExit={handleCloseModalInfo}
-                img={require('../../../img/topikImg/modalBack.png')}
-                slideAnim={slideAnim}
-              />
-            </View>
-          </Modal>
-        </View>
+        <View style={styles.container}></View>
       </View>
     </SafeAreaView>
   );

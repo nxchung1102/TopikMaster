@@ -1,7 +1,7 @@
 import {View, Text, StyleSheet} from 'react-native';
 import {LightGray, Dark} from '../../../../../util/Theme/ThemeGlobal';
 
-const TableContent1 = () => {
+const Scale = () => {
   return (
     <View style={{flexDirection: 'row'}}>
       <View
@@ -40,4 +40,4 @@ const TableContent1 = () => {
 const styles = StyleSheet.create({
   cell: {borderWidth: 1, borderColor: LightGray, flex: 1},
 });
-export default TableContent1;
+export default Scale;

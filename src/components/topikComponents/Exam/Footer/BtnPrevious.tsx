@@ -5,8 +5,14 @@ import {DarkGray} from '../../../../util/Theme/ThemeGlobal';
 import {ExamContext} from '../../../Context/Topik/Exam/DoingExamProvider';
 
 const BtnPrevious = () => {
-  const {idxPart, idxQuestion, setIdxPart, setIdxQuestion, examData} =
-    useContext(ExamContext);
+  const {
+    idxPart,
+    idxQuestion,
+    setIdxPart,
+    setIdxQuestion,
+    examData,
+    setIsShowTable,
+  } = useContext(ExamContext);
   const typeSection = examData?.data.typeSection;
   const handleBack = () => {
     if (idxQuestion > 0) {
@@ -22,7 +28,13 @@ const BtnPrevious = () => {
   return (
     <>
       {(idxPart == 0 && idxQuestion == 0) || typeSection === 1 ? (
-        <View style={{flex: 1}}></View>
+        <View
+          style={{flex: 1}}
+          onTouchEnd={() => {
+            setIsShowTable(false);
+          }}>
+          <Text style={{flex: 1}}></Text>
+        </View>
       ) : (
         <Pressable
           style={{

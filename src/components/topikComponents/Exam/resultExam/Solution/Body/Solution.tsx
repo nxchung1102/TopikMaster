@@ -4,15 +4,28 @@ import {RenderResultData} from './Web/RenderResultData';
 import {TemplateResult} from './Web/TemplateResult';
 import WebViewResult from './Web/WebViewResult';
 import {useDataResult} from '../../../../../Context/Topik/Result/ResultExamProvider';
+import TableSolution from '../Footer/TableSolution';
+import {Light} from '../../../../../../util/Theme/ThemeGlobal';
 const Solution = () => {
-  const {typeSection, data, idxPart, idxQuestion} = useDataResult();
+  const {typeSection, data, idxPart, idxQuestion, setIsShow} = useDataResult();
   const html =
     data &&
     RenderResultData(parseInt(typeSection + ''), data, idxPart, idxQuestion);
-  console.log(html);
 
   return (
-    <View style={{flex: 1}}>{<WebViewResult html={html ? html : ''} />}</View>
+    <View
+      style={{
+        flex: 1,
+        position: 'relative',
+        paddingVertical: 20,
+        backgroundColor: Light,
+      }}
+      onTouchEnd={() => {
+        setIsShow(false);
+      }}>
+      <WebViewResult html={html ? html : ''} />
+      <TableSolution />
+    </View>
   );
 };
 

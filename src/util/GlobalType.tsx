@@ -767,6 +767,12 @@ export type dataStandardType =
       userOptionId: [];
       dataOutline: [];
       userOptionText: string[];
+      contentWritingGPT: {
+        FULFILMENT: string;
+        REWRITE: string;
+        SCORE: string;
+        VOCA_GRAMMAR: string;
+      };
     }
   | undefined;
 

@@ -11,7 +11,7 @@ import {DoingExamType} from '../../../../util/GlobalType';
 
 interface BodyExamProps {
   ieltsId: string;
-  dataStore: any;
+  dataStore?: any;
 }
 const BodyExam = (props: BodyExamProps) => {
   const {ieltsId, dataStore} = props;
@@ -74,7 +74,12 @@ const BodyExam = (props: BodyExamProps) => {
 
   return (
     <View
-      style={{flex: 15, backgroundColor: Light}}
+      style={{
+        flex: 15,
+        backgroundColor: Light,
+        paddingVertical: 10,
+        position: 'relative',
+      }}
       onTouchEnd={() => {
         setIsShowTable(false);
       }}>

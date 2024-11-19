@@ -2,9 +2,10 @@ import {Pressable, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import Feather from 'react-native-vector-icons/Feather';
 import {DarkPink} from '../../../../../../util/Theme/ThemeGlobal';
+import {useDataResult} from '../../../../../Context/Topik/Result/ResultExamProvider';
 
 const BtnShowTable = () => {
-  const [isShowTable, setIsShowTable] = useState(false);
+  const {isShow, setIsShow} = useDataResult();
   return (
     <Pressable
       style={{
@@ -16,9 +17,9 @@ const BtnShowTable = () => {
         borderRadius: 8,
       }}
       onPress={() => {
-        setIsShowTable(!isShowTable);
+        setIsShow(!isShow);
       }}>
-      <Feather name={isShowTable ? 'x' : 'list'} size={25} color={DarkPink} />
+      <Feather name={isShow ? 'x' : 'list'} size={25} color={DarkPink} />
       <Text style={{fontSize: 16, color: DarkPink}}> Danh sách câu hỏi</Text>
     </Pressable>
   );

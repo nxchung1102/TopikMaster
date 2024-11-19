@@ -1,8 +1,8 @@
 import React from 'react';
 import {SafeAreaView, View} from 'react-native';
 import {Light, LightGray} from '../../../../../util/Theme/ThemeGlobal';
-import TableContent1 from './TableContent1';
-import TableContent2 from './TableContent2';
+import Scale from './Scale';
+import ScaleSecond from './ScaleSecond';
 import TableHeader from './TableHeader';
 
 const TableTooltip = () => {
@@ -14,8 +14,8 @@ const TableTooltip = () => {
         <TableHeader content="Trình độ" space={70} />
         <TableHeader content="Điểm đỗ" space={120} />
       </View>
-      <TableContent1 />
-      <TableContent2 />
+      <Scale />
+      <ScaleSecond />
     </SafeAreaView>
   );
 };

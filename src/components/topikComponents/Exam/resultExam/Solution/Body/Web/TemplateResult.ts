@@ -24,7 +24,7 @@ export const TemplateResult = (data: string, script: string) => {
     width: 100%; 
     padding: 10px 0px;
     }
-     img {
+    img {
       width: 100%;
     }
    input {
@@ -32,9 +32,28 @@ export const TemplateResult = (data: string, script: string) => {
       border-style: solid; 
       text-align: center;
     }
-       textarea {
+    textarea {
       border-width: 1px;
       border-style: solid; 
+      }
+    .btnExplain {
+    padding: 5px; background-color:#fff;
+    color: #5685ff;
+    }
+    .active {
+    font-weight: 700;
+    color: #5685ff;
+    border-bottom: 3px solid #5685FF;
+    }
+      .show {
+        display: block;
+        padding: 20px;
+        background-color: #f1f5ff;
+        color: #324357;
+        border-radius: 10px;
+      }
+      .hide {
+        display: none;
       }
   </style>
    </head>

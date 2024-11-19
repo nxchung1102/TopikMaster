@@ -8,6 +8,7 @@ export const ReadMaterialQuestion = (
   lstQuestion?: listAnswerType,
   sectionStattus?: number,
   checkedIcon?: string,
+  failedIcon?: string,
 ) => {
   return ` <div>${material?.contentHtml}</div>
         ${material?.data
@@ -50,12 +51,18 @@ export const ReadMaterialQuestion = (
               ? `checked`
               : ``
           }
-            ${rdo.isAnswer && rdo.userSelected ? `checked` : ``}        
+            ${rdo.userSelected ? `checked` : ``}   
+              ${sectionStattus === 2 ? `disabled` : ``}     
           />
                 <div></div>
               </div>
               <label for="${rdo.content}"> ${rdo.content} </label>
                     ${rdo.isAnswer ? checkedIcon : ``}
+                      ${
+                        rdo.userSelected !== rdo.isAnswer && !rdo.isAnswer
+                          ? failedIcon
+                          : ``
+                      }
             </div>
             `;
               })
